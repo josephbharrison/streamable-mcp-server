@@ -46,6 +46,7 @@ function createMcpServer(sessionId: string) {
         `[MCP] [${sessionId}] [tool:stream_numbers] Start streaming up to ${count}`,
       );
 
+      let accumulator = "";
       for (let i = 1; i <= count; i++) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] sending notification of count: ${i}`,
@@ -75,11 +76,12 @@ function createMcpServer(sessionId: string) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] Streamed number ${i}`,
         );
+        accumulator += `${i} `;
 
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
 
-      return { content: [{ type: "text", text: "Done!" }] };
+      return { content: [{ type: "text", text: "Done" }] };
     },
   );
 

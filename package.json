@@ -4,8 +4,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "mcp": "ts-node --esm mcpServer.ts",
-    "sse": "ts-node --esm sseServer.ts"
+    "mcp": "npx tsx watch mcpServer.ts",
+    "sse": "npx tsx watch sseServer.ts"
   },
   "keywords": [],
   "author": "",
