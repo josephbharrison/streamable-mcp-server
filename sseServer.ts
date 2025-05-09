@@ -81,7 +81,7 @@ function createMcpServer(sessionId: string) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
 
-      return { content: [{ type: "text", text: "Done" }] };
+      return { content: [{ type: "text", text: accumulator }] };
     },
   );
 
