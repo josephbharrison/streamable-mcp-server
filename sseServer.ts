@@ -48,12 +48,22 @@ function createMcpServer(sessionId: string) {
         const value = i * 2;
 
         // Fire-and-forget → do NOT await
+        //
         // method: "notifications/progress",
         // params: {
         //   progressToken: "stream_numbers",
         //   progress: i,
         //   total: count,
-        //   content: [{ type: "text", text: `${i}\n` }],
+        //   content: [{ type: "text", text: `${value} ` }],
+        //
+        // method: "notifications/message",
+        // params: {
+        //   level: "info",
+        //   data: { type: "text", text: `${value} ` },
+        // },
+        //
+        // NOTE: Only `notifications/message` surfaces the stream in the client.
+        // `notifications/message` works by patching and extending OpenAI Agents SDK.
         extra
           .sendNotification({
             method: "notifications/message",
