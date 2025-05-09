@@ -45,7 +45,7 @@ function createMcpServer(sessionId: string) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] sending notification of count: ${i}`,
         );
-        const value = i * 2;
+        const value = i < count ? i * 2 : `${i * 2}.`;
 
         // Fire-and-forget → do NOT await
         //
