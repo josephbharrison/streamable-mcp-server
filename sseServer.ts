@@ -31,12 +31,6 @@ function createMcpServer(sessionId: string) {
 
   logger(`[MCP] [${sessionId}] MCP Server created.`);
 
-  // --- Add Tool: add ---
-  server.tool("add", { a: z.number(), b: z.number() }, async ({ a, b }) => {
-    logger(`[MCP] [${sessionId}] [tool:add] Invoked with a=${a}, b=${b}`);
-    return { content: [{ type: "text", text: String(a + b) }] };
-  });
-
   // --- Add Tool: stream_numbers ---
   server.tool(
     "stream_numbers",
@@ -85,6 +79,12 @@ function createMcpServer(sessionId: string) {
       return { content: [{ type: "text", text: accumulator }] };
     },
   );
+
+  // --- Add Tool: add ---
+  server.tool("add", { a: z.number(), b: z.number() }, async ({ a, b }) => {
+    logger(`[MCP] [${sessionId}] [tool:add] Invoked with a=${a}, b=${b}`);
+    return { content: [{ type: "text", text: String(a + b) }] };
+  });
 
   // --- Add Tool: get_current_weather ---
   server.tool("get_current_weather", { city: z.string() }, async ({ city }) => {
