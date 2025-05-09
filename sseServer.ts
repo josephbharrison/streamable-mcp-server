@@ -65,7 +65,7 @@ function createMcpServer(sessionId: string) {
             method: "notifications/message",
             params: {
               level: "info",
-              data: { type: "text", text: `${value}\n` },
+              data: { type: "text", text: `${value} ` },
             },
           })
           .catch((err) => {
