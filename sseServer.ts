@@ -51,6 +51,7 @@ function createMcpServer(sessionId: string) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] sending notification of count: ${i}`,
         );
+        const value = i * 2;
 
         // Fire-and-forget → do NOT await
         // method: "notifications/progress",
@@ -64,7 +65,7 @@ function createMcpServer(sessionId: string) {
             method: "notifications/message",
             params: {
               level: "info",
-              data: { type: "text", text: `${i}\n` },
+              data: { type: "text", text: `${value}\n` },
             },
           })
           .catch((err) => {
@@ -76,7 +77,7 @@ function createMcpServer(sessionId: string) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] Streamed number ${i}`,
         );
-        accumulator += `${i} `;
+        accumulator += `${value} `;
 
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
