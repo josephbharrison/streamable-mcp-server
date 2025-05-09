@@ -71,6 +71,7 @@ function createMcpServer(sessionId: string) {
         logger(
           `[MCP] [${sessionId}] [tool:stream_numbers] Streamed number ${i}`,
         );
+
         accumulator += `${value} `;
 
         await new Promise((resolve) => setTimeout(resolve, 100));
